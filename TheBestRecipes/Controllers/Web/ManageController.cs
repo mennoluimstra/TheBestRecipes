@@ -11,7 +11,7 @@ using TheBestRecipes.Models;
 using TheBestRecipes.Models.ManageViewModels;
 using TheBestRecipes.Services;
 
-namespace TheBestRecipes.Controllers
+namespace TheBestRecipes.Controllers.Web
 {
     [Authorize]
     public class ManageController : Controller

@@ -13,7 +13,7 @@ using TheBestRecipes.Models;
 using TheBestRecipes.Models.AccountViewModels;
 using TheBestRecipes.Services;
 
-namespace TheBestRecipes.Controllers
+namespace TheBestRecipes.Controllers.Web
 {
     [Authorize]
     public class AccountController : Controller
