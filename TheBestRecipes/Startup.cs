@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using TheBestRecipes.Data;
 using TheBestRecipes.Models;
 using TheBestRecipes.Services;
+using TheBestRecipes.Business;
 
 namespace TheBestRecipes
 {
@@ -52,10 +53,15 @@ namespace TheBestRecipes
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-        }
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
+			services.AddScoped<IRecipeManager, RecipeManager>();
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+			services.AddTransient<SeedData>();
+
+		}
+
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SeedData seeder)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -83,6 +89,9 @@ namespace TheBestRecipes
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-        }
-    }
+
+			seeder.EnsureSeedData().Wait();
+
+		}
+	}
 }
