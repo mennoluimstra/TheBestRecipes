@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using TheBestRecipes.ViewModels;
 
-namespace TheBestRecipes.Business
+namespace TheBestRecipes.Services
 {
-	public interface IRecipeManager
+	public interface IRecipeDataService
 	{
 		IList<RecipeViewModel> GetAllRecipes();
+
+		RecipeCompleteViewModel GetRecipe(int id);
 	}
 }

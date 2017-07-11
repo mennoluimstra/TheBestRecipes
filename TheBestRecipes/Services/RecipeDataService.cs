@@ -3,13 +3,13 @@ using System.Linq;
 using TheBestRecipes.Data;
 using TheBestRecipes.ViewModels;
 
-namespace TheBestRecipes.Business
+namespace TheBestRecipes.Services
 {
-	public class RecipeManager : IRecipeManager
+	public class RecipeDataService : IRecipeDataService
 	{
 		private IUnitOfWork _unitOfWork;
 
-		public RecipeManager(IUnitOfWork unitOfWork)
+		public RecipeDataService(IUnitOfWork unitOfWork)
 		{
 			_unitOfWork = unitOfWork;
 		}
@@ -21,9 +21,20 @@ namespace TheBestRecipes.Business
 							{
 								Name = r.Title,
 								Description = r.Description,
-								Image = r.ImagePath
+								Image = r.ImagePath,
 							}).ToList();
 			return result;
 		}
-    }
+
+		public RecipeCompleteViewModel GetRecipe(int id)
+		{
+			var result = _unitOfWork.RecipeRepository.GetByID(id);
+			return new RecipeCompleteViewModel
+			{
+				Name = result.Title,
+				Description = result.Description,
+				Image = result.ImagePath,
+			};
+		}
+	}
 }

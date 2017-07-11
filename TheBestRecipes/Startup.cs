@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,11 +8,10 @@ using Microsoft.Extensions.Logging;
 using TheBestRecipes.Data;
 using TheBestRecipes.Models;
 using TheBestRecipes.Services;
-using TheBestRecipes.Business;
 
 namespace TheBestRecipes
 {
-    public class Startup
+	public class Startup
     {
         public Startup(IHostingEnvironment env)
         {
@@ -54,7 +49,7 @@ namespace TheBestRecipes
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
-			services.AddScoped<IRecipeManager, RecipeManager>();
+			services.AddScoped<IRecipeDataService, RecipeDataService>();
 
 			services.AddTransient<SeedData>();
 
@@ -87,7 +82,8 @@ namespace TheBestRecipes
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}/{id?}",
+					defaults: new { controller = "Home", action = "Index" });
             });
 
 			seeder.EnsureSeedData().Wait();

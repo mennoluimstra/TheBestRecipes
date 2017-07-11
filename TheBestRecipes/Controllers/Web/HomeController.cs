@@ -1,30 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using TheBestRecipes.Business;
-using TheBestRecipes.Data;
+using TheBestRecipes.Services;
 using TheBestRecipes.ViewModels;
 
 namespace TheBestRecipes.Controllers.Web
 {
 	public class HomeController : Controller
 	{
-		private readonly IRecipeManager _recipemanager;
+		private readonly IRecipeDataService _recipeDataService;
 
-		public HomeController(IRecipeManager recipemanager)
+		public HomeController(IRecipeDataService recipeDataService)
 		{
-			_recipemanager = recipemanager;
+			_recipeDataService = recipeDataService;
 		}
 
 		public IActionResult Index()
 		{
-			var recipes = _recipemanager.GetAllRecipes();
+			var recipes = _recipeDataService.GetAllRecipes();
 			return View(recipes);
 		}
 
 		public IActionResult Recipe()
 		{
-			var model = new RecipeCompleteViewModel { Name = "Brit­se cot­ta­ge pie", Image = "Britse-cottage-pie.jpg" };
+			var model = _recipeDataService.GetRecipe(1); //todo: get the id.
 			return View(model);
 		}
 
