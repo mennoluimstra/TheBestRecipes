@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TheBestRecipes.Models;
 
 namespace TheBestRecipes.Data
@@ -6,6 +7,6 @@ namespace TheBestRecipes.Data
 	public interface IUnitOfWork : IDisposable
     {
 		IRepository<Recipe> RecipeRepository { get; }
-		void Save();
+		Task<bool> SaveChangesAsync();
 	}
 }

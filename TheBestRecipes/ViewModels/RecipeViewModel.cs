@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TheBestRecipes.ViewModels
+﻿namespace TheBestRecipes.ViewModels
 {
-    public class RecipeViewModel
+	/// A subset of Recipe used to display the list on the main page.
+	public class RecipeViewModel
     {
-		public string Name { get; set; }
-		public string Description { get; set; }
-		public string Image { get; set; }
+		public int Id { get; set; }
+		public string Title { get; set; }
+		public string ImagePath { get; set; }
 	}
 }

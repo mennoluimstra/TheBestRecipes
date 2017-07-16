@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TheBestRecipes.Models;
 using TheBestRecipes.Services;
 using TheBestRecipes.ViewModels;
 
@@ -26,7 +27,7 @@ namespace TheBestRecipes.Controllers.Web
 		}
 
 		[HttpPost]
-		public IActionResult Recipe(RecipeCompleteViewModel model)
+		public IActionResult Recipe(Recipe model)
 		{
 			if (ModelState.IsValid)
 			{

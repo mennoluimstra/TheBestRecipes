@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TheBestRecipes.Models;
 
 namespace TheBestRecipes.Data
@@ -26,9 +27,9 @@ namespace TheBestRecipes.Data
 			_context = context;
 		}
 
-		public void Save()
+		public async Task<bool> SaveChangesAsync()
 		{
-			_context.SaveChanges();
+			return (await _context.SaveChangesAsync()) > 0;
 		}
 
 		private bool disposed = false;

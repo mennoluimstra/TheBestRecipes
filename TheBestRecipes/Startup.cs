@@ -80,10 +80,18 @@ namespace TheBestRecipes
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
+
+				// this route makes it possible to do this: recipe/1
+				routes.MapRoute(
+					name: "Recipes",
+					template: "recipe/{id}",
+					defaults: new { controller = "Recipes", action = "Details", id = 0 });
+
+
+				routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action}/{id?}",
-					defaults: new { controller = "Home", action = "Index" });
+					defaults: new { controller = "Recipes", action = "Index" });
             });
 
 			seeder.EnsureSeedData().Wait();

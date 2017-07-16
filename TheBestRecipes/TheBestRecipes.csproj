@@ -11,6 +11,11 @@
   <PropertyGroup>
     <UserSecretsId>aspnet-TheBestRecipes-a68ebc24-c0c2-462a-9ad8-22e53fcbe095</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\images\not-available.jpg" />
+    <Content Include="wwwroot\images\photo-not-available-170x170.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -32,9 +37,6 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.1" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.1" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Business\" />
   </ItemGroup>
 
 </Project>
