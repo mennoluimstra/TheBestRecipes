@@ -49,18 +49,10 @@ namespace TheBestRecipes.Data
 
 			#region RecipeStep
 
-			builder.Entity<RecipeStep>()
-				.HasKey(bc => new { bc.RecipeId, bc.StepId });
-
-			builder.Entity<RecipeStep>()
-				.HasOne(bc => bc.Recipe)
-				.WithMany(b => b.RecipeSteps)
-				.HasForeignKey(bc => bc.RecipeId);
-
-			builder.Entity<RecipeStep>()
-				.HasOne(bc => bc.Step)
-				.WithMany(c => c.RecipeSteps)
-				.HasForeignKey(bc => bc.StepId);
+			// Changed to one-to-many relationship
+			builder.Entity<Recipe>()
+				.HasMany(r => r.Steps)
+				.WithOne(s => s.Recipe);
 
 			#endregion RecipeStep
 

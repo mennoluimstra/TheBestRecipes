@@ -56,16 +56,11 @@ namespace TheBestRecipes.Services
 		{
 			var result = _unitOfWork.RecipeRepository.Get()
 							.Where(r => r.Id == id)
-							.Include(r => r.RecipeSteps)
+							.Include(r => r.Steps)
 							.Include(r => r.RecipeIngredients)
 							.Include(r => r.RecipeTags)
 							.FirstOrDefault();
 			return result;
-		}
-
-		public Recipe GetRecipeComplete(int id)
-		{
-			return _unitOfWork.RecipeRepository.GetByID(id);
 		}
 
 		public async Task<bool> InsertAsync(Recipe recipe)

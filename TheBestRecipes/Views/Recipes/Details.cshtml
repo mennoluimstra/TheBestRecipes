@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>@Html.DisplayNameFor(model => model.Title)</h4>
+    <h4>@Html.DisplayFor(model => model.Title)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -46,14 +46,14 @@
 	<h4>Bereiden</h4>
 	<hr />
 	<dl class="dl-horizontal">
-@foreach (var step in Model.RecipeSteps)
+@foreach (var step in Model.Steps)
 {
 
 		<dt>
-			@Html.DisplayNameFor(stepItem => step.Step.Index)
+			@Html.DisplayFor(stepItem => step.Index)
 		</dt>
 		<dd>
-			@Html.DisplayFor(stepItem => step.Step.Description)
+			@Html.DisplayFor(stepItem => step.Description)
 		</dd>
 }
 	</dl>

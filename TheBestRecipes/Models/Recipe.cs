@@ -9,8 +9,8 @@ namespace TheBestRecipes.Models
         public string Description { get; set; }
         public int Rating { get; set; }
         public int NumberOfPersons { get; set; }
-        public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
-        public ICollection<RecipeStep> RecipeSteps { get; set; }
+		public ICollection<Step> Steps { get; set; }
+		public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
         public ICollection<RecipeTag> RecipeTags { get; set; }
         public string Source { get; set; }
         public string ImagePath { get; set; }
