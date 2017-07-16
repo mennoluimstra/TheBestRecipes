@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -17,7 +16,7 @@ namespace TheBestRecipes.Data
 			this.dbSet = context.Set<T>();
 		}
 
-		public virtual IEnumerable<T> Get(
+		public virtual IQueryable<T> Get(
 			Expression<Func<T, bool>> filter = null,
 			Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
 			string includeProperties = "")
@@ -37,11 +36,11 @@ namespace TheBestRecipes.Data
 
 			if (orderBy != null)
 			{
-				return orderBy(query).ToList();
+				return orderBy(query);
 			}
 			else
 			{
-				return query.ToList();
+				return query;
 			}
 		}
 

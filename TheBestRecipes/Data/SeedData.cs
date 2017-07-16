@@ -19,7 +19,10 @@ namespace TheBestRecipes.Data
 		{
 			if (!_context.Recipes.Any())
 			{
-				_context.Recipes.Add(new Recipe { Title = "Wok­scho­tel met run­der­reep­jes en pak­soi", ImagePath = "Wokschotel-met-runderreepjes-en-paksoi.jpg" });
+				var recipe1 = new Recipe { Title = "Wok­scho­tel met run­der­reep­jes en pak­soi", ImagePath = "Wokschotel-met-runderreepjes-en-paksoi.jpg" };
+				//var steps = new List<Step> {
+				//};
+				_context.Recipes.Add(recipe1);
 				_context.Recipes.Add(new Recipe { Title = "Spi­na­zie­cur­ry met kaas en naan­brood", ImagePath = "Spinaziecurry-met-kaas-en-naan­brood.jpg" });
 				_context.Recipes.Add(new Recipe { Title = "Brit­se cot­ta­ge pie", ImagePath = "Britse-cottage-pie.jpg" });
 				_context.Recipes.Add(new Recipe { Title = "Wok­scho­tel met run­der­reep­jes en pak­soi", ImagePath = "Wokschotel-met-runderreepjes-en-paksoi.jpg" });

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using TheBestRecipes.Data;
@@ -52,6 +53,17 @@ namespace TheBestRecipes.Services
 		}
 
 		public Recipe GetRecipe(int id)
+		{
+			var result = _unitOfWork.RecipeRepository.Get()
+							.Where(r => r.Id == id)
+							.Include(r => r.RecipeSteps)
+							.Include(r => r.RecipeIngredients)
+							.Include(r => r.RecipeTags)
+							.FirstOrDefault();
+			return result;
+		}
+
+		public Recipe GetRecipeComplete(int id)
 		{
 			return _unitOfWork.RecipeRepository.GetByID(id);
 		}

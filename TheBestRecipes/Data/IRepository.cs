@@ -9,7 +9,7 @@ namespace TheBestRecipes.Data
 	{
 		void Delete(object id);
 		void Delete(T entityToDelete);
-		IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "");
+		IQueryable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "");
 		T GetByID(object id);
 		void Insert(T entity);
 		void Update(T entityToUpdate);
